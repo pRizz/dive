@@ -71,7 +71,11 @@ func NewFileInfo(realPath, path string, info os.FileInfo) FileInfo {
 		if err != nil {
 			panic(fmt.Errorf("unable to open file %q: %s", realPath, err))
 		}
-		defer file.Close()
+		defer func() {
+			if closeErr := file.Close(); closeErr != nil {
+				panic(fmt.Errorf("unable to close file %q: %w", realPath, closeErr))
+			}
+		}()
 		hash = getHashFromReader(file)
 	}
 

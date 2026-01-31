@@ -44,7 +44,7 @@ func (r *resolver) Fetch(ctx context.Context, id string) (*image.Image, error) {
 func (r *resolver) Extract(ctx context.Context, id string, l string, p string) error {
 	// todo: add podman fetch attempt via varlink first...
 
-	err, reader := streamPodmanCmd("image", "save", id)
+	reader, err := streamPodmanCmd("image", "save", id)
 	if err != nil {
 		return err
 	}
@@ -57,7 +57,7 @@ func (r *resolver) Extract(ctx context.Context, id string, l string, p string) e
 }
 
 func (r *resolver) resolveFromDockerArchive(id string) (*image.Image, error) {
-	err, reader := streamPodmanCmd("image", "save", id)
+	reader, err := streamPodmanCmd("image", "save", id)
 	if err != nil {
 		return nil, err
 	}

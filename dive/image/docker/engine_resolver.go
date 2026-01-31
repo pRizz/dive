@@ -36,7 +36,11 @@ func (r *engineResolver) Fetch(ctx context.Context, id string) (*image.Image, er
 	if err != nil {
 		return nil, err
 	}
-	defer reader.Close()
+	defer func() {
+		if closeErr := reader.Close(); closeErr != nil {
+			log.WithFields("error", closeErr, "image", id).Warn("failed to close docker archive reader")
+		}
+	}()
 
 	img, err := NewImageArchive(reader)
 	if err != nil {
@@ -98,7 +102,9 @@ func (r *engineResolver) fetchArchive(ctx context.Context, id string) (io.ReadCl
 	default:
 
 		if os.Getenv("DOCKER_TLS_VERIFY") != "" && os.Getenv("DOCKER_CERT_PATH") == "" {
-			os.Setenv("DOCKER_CERT_PATH", "~/.docker")
+			if setErr := os.Setenv("DOCKER_CERT_PATH", "~/.docker"); setErr != nil {
+				return nil, fmt.Errorf("unable to set DOCKER_CERT_PATH: %w", setErr)
+			}
 		}
 	}
 

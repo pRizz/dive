@@ -53,7 +53,11 @@ func (e *jsonExporter) ExportTo(ctx context.Context, analysis *image.Analysis, p
 	if err != nil {
 		return fmt.Errorf("cannot open export file: %w", err)
 	}
-	defer file.Close()
+	defer func() {
+		if closeErr := file.Close(); closeErr != nil {
+			log.WithFields("error", closeErr, "path", path).Warn("failed to close export file")
+		}
+	}()
 
 	_, err = file.Write(bytes)
 	if err != nil {

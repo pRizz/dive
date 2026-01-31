@@ -159,7 +159,9 @@ func (n *V1UI) Handle(e partybus.Event) error {
 }
 
 func (n *V1UI) writeToStdout(s string) {
-	fmt.Fprintln(n.out, s)
+	if _, err := fmt.Fprintln(n.out, s); err != nil {
+		log.WithFields("error", err).Warn("unable to write to stdout")
+	}
 }
 
 func (n *V1UI) writeToStderr(s string) {
@@ -168,7 +170,9 @@ func (n *V1UI) writeToStderr(s string) {
 		// This only applies to status like info on stderr, not to primary reports on stdout.
 		return
 	}
-	fmt.Fprintln(n.err, s)
+	if _, err := fmt.Fprintln(n.err, s); err != nil {
+		log.WithFields("error", err).Warn("unable to write to stderr")
+	}
 }
 
 func (n V1UI) Teardown(_ bool) error {

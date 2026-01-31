@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/wagoodman/dive/dive/image"
+	"github.com/wagoodman/dive/internal/log"
 )
 
 type archiveResolver struct{}
@@ -24,7 +25,11 @@ func (r *archiveResolver) Fetch(ctx context.Context, path string) (*image.Image,
 	if err != nil {
 		return nil, err
 	}
-	defer reader.Close()
+	defer func() {
+		if closeErr := reader.Close(); closeErr != nil {
+			log.WithFields("error", closeErr, "path", path).Warn("failed to close archive reader")
+		}
+	}()
 
 	img, err := NewImageArchive(reader)
 	if err != nil {

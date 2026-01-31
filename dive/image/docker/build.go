@@ -7,6 +7,7 @@ import (
 
 	"github.com/scylladb/go-set/strset"
 	"github.com/spf13/afero"
+	"github.com/wagoodman/dive/internal/log"
 )
 
 const (
@@ -19,8 +20,16 @@ func buildImageFromCli(fs afero.Fs, buildArgs []string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	defer fs.Remove(iidfile.Name()) // nolint:errcheck
-	defer iidfile.Close()
+	defer func() {
+		if removeErr := fs.Remove(iidfile.Name()); removeErr != nil {
+			log.WithFields("error", removeErr, "path", iidfile.Name()).Warn("failed to remove docker iidfile")
+		}
+	}()
+	defer func() {
+		if closeErr := iidfile.Close(); closeErr != nil {
+			log.WithFields("error", closeErr, "path", iidfile.Name()).Warn("failed to close docker iidfile")
+		}
+	}()
 
 	var allArgs []string
 	if isFileFlagsAreSet(buildArgs, "-f", "--file") {
@@ -80,5 +89,5 @@ func tryFindContainerfile(fs afero.Fs, buildArgs []string) (string, error) {
 		}
 	}
 
-	return "", fmt.Errorf("could not find Containerfile or Dockerfile\n")
+	return "", fmt.Errorf("could not find Containerfile or Dockerfile")
 }

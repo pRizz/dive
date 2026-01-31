@@ -15,7 +15,11 @@ func TestLoadArchive(t testing.TB, tarPath string) (*ImageArchive, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer f.Close()
+	defer func() {
+		if closeErr := f.Close(); closeErr != nil {
+			require.NoError(t, closeErr, "unable to close archive")
+		}
+	}()
 
 	return NewImageArchive(f)
 }

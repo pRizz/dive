@@ -58,7 +58,7 @@ func (c *Analysis) PostLoad() error {
 		if sourceType == dive.SourceUnknown {
 			sourceType = dive.ParseImageSource(c.ContainerEngine)
 			if sourceType == dive.SourceUnknown {
-				return fmt.Errorf("unable to determine image source from %q: %v\n", c.Image, c.ContainerEngine)
+				return fmt.Errorf("unable to determine image source from %q: %v", c.Image, c.ContainerEngine)
 			}
 
 			// use exactly what the user provided

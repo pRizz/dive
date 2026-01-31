@@ -4,12 +4,13 @@ package podman
 
 import (
 	"fmt"
-	"github.com/wagoodman/dive/internal/log"
-	"github.com/wagoodman/dive/internal/utils"
 	"io"
 	"os"
 	"os/exec"
 	"strings"
+
+	"github.com/wagoodman/dive/internal/log"
+	"github.com/wagoodman/dive/internal/utils"
 )
 
 // runPodmanCmd runs a given Podman command in the current tty
@@ -33,9 +34,9 @@ func runPodmanCmd(cmdStr string, args ...string) error {
 	return cmd.Run()
 }
 
-func streamPodmanCmd(args ...string) (error, io.Reader) {
+func streamPodmanCmd(args ...string) (io.Reader, error) {
 	if !isPodmanClientBinaryAvailable() {
-		return fmt.Errorf("cannot find podman client executable"), nil
+		return nil, fmt.Errorf("cannot find podman client executable")
 	}
 
 	allArgs := utils.CleanArgs(args)
@@ -47,14 +48,21 @@ func streamPodmanCmd(args ...string) (error, io.Reader) {
 
 	reader, writer, err := os.Pipe()
 	if err != nil {
-		return err, nil
+		return nil, err
 	}
-	defer writer.Close()
+	defer func() {
+		if closeErr := writer.Close(); closeErr != nil {
+			log.WithFields("error", closeErr).Warn("failed to close podman pipe writer")
+		}
+	}()
 
 	cmd.Stdout = writer
 	cmd.Stderr = os.Stderr
 
-	return cmd.Start(), reader
+	if err := cmd.Start(); err != nil {
+		return nil, err
+	}
+	return reader, nil
 }
 
 func isPodmanClientBinaryAvailable() bool {

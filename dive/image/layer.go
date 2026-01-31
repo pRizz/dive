@@ -37,7 +37,7 @@ func (l *Layer) ShortId() string {
 func (l *Layer) commandPreview() string {
 	// Layers using heredocs can be multiple lines; rendering relies on
 	// Layer.String to be a single line.
-	return strings.Replace(l.Command, "\n", "↵", -1)
+	return strings.ReplaceAll(l.Command, "\n", "↵")
 }
 
 func (l *Layer) String() string {

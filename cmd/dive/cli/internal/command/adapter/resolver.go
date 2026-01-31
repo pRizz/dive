@@ -48,7 +48,7 @@ func (i imageActionObserver) Build(ctx context.Context, options []string) (*imag
 
 func (i imageActionObserver) Fetch(ctx context.Context, id string) (*image.Image, error) {
 	log.WithFields("image", id).Info("fetching")
-	log.Debugf("└── resolver: %s", i.Resolver.Name())
+	log.Debugf("└── resolver: %s", i.Name())
 
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
@@ -69,15 +69,13 @@ func (i imageActionObserver) Fetch(ctx context.Context, id string) (*image.Image
 
 	go func() {
 		// in 5 seconds if the context is not cancelled, log the message
-		select { // nolint:gosimple
-		case <-time.After(3 * time.Second):
-			if ctx.Err() == nil {
-				bus.Notify(" • this can take a while for large images...")
-				mon.AtomicStage.Set("(this can take a while for large images)")
+		time.Sleep(3 * time.Second)
+		if ctx.Err() == nil {
+			bus.Notify(" • this can take a while for large images...")
+			mon.AtomicStage.Set("(this can take a while for large images)")
 
-				// TODO: default level should be error for this to work when using the UI
-				//log.Warn("this can take a while for large images")
-			}
+			// TODO: default level should be error for this to work when using the UI
+			//log.Warn("this can take a while for large images")
 		}
 	}()
 

@@ -4,6 +4,8 @@ package podman
 
 import (
 	"os"
+
+	"github.com/wagoodman/dive/internal/log"
 )
 
 func buildImageFromCli(buildArgs []string) (string, error) {
@@ -11,8 +13,16 @@ func buildImageFromCli(buildArgs []string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	defer os.Remove(iidfile.Name())
-	defer iidfile.Close()
+	defer func() {
+		if removeErr := os.Remove(iidfile.Name()); removeErr != nil {
+			log.WithFields("error", removeErr, "path", iidfile.Name()).Warn("failed to remove podman iidfile")
+		}
+	}()
+	defer func() {
+		if closeErr := iidfile.Close(); closeErr != nil {
+			log.WithFields("error", closeErr, "path", iidfile.Name()).Warn("failed to close podman iidfile")
+		}
+	}()
 
 	allArgs := append([]string{"--iidfile", iidfile.Name()}, buildArgs...)
 	err = runPodmanCmd("build", allArgs...)
