@@ -1,0 +1,16 @@
+---
+description: Require build and lint before commit
+alwaysApply: true
+---
+
+# Pre-commit checks
+
+Before committing, ensure build and lint pass locally:
+
+- `make build`
+- `make lint`
+
+If you are using the task runner directly, the equivalents are:
+
+- `./.tool/task build`
+- `./.tool/task lint`
