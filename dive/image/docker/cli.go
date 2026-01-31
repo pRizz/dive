@@ -2,8 +2,8 @@ package docker
 
 import (
 	"fmt"
-	"github.com/wagoodman/dive/internal/log"
-	"github.com/wagoodman/dive/internal/utils"
+	"github.com/pRizz/dive/internal/log"
+	"github.com/pRizz/dive/internal/utils"
 	"os"
 	"os/exec"
 	"strings"

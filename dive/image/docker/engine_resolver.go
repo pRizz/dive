@@ -2,9 +2,9 @@ package docker
 
 import (
 	"fmt"
+	"github.com/pRizz/dive/internal/bus/event/payload"
+	"github.com/pRizz/dive/internal/log"
 	"github.com/spf13/afero"
-	"github.com/wagoodman/dive/internal/bus/event/payload"
-	"github.com/wagoodman/dive/internal/log"
 	"io"
 	"net/http"
 	"os"
@@ -17,7 +17,7 @@ import (
 	"github.com/docker/docker/client"
 	"golang.org/x/net/context"
 
-	"github.com/wagoodman/dive/dive/image"
+	"github.com/pRizz/dive/dive/image"
 )
 
 type engineResolver struct{}

@@ -5,12 +5,16 @@ alwaysApply: true
 
 # Pre-commit checks
 
-Before committing, ensure build and lint pass locally:
+This repo has tests (unit + CLI). Before committing, ensure formatting, build, lint, and tests pass locally:
 
+- `gofmt -w -s .`
 - `make build`
 - `make lint`
+- `make test`
 
 If you are using the task runner directly, the equivalents are:
 
+- `./.tool/task format`
 - `./.tool/task build`
 - `./.tool/task lint`
+- `./.tool/task test`

@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"github.com/anchore/go-logger"
 	"github.com/awesome-gocui/gocui"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/ui/v1/format"
-	"github.com/wagoodman/dive/internal/log"
-	"github.com/wagoodman/dive/internal/utils"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/ui/v1/format"
+	"github.com/pRizz/dive/internal/log"
+	"github.com/pRizz/dive/internal/utils"
 )
 
 // Debug is just for me :)

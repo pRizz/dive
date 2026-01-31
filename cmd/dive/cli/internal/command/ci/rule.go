@@ -1,7 +1,7 @@
 package ci
 
 import (
-	"github.com/wagoodman/dive/dive/image"
+	"github.com/pRizz/dive/dive/image"
 )
 
 const (

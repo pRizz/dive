@@ -5,7 +5,7 @@ package podman
 import (
 	"os"
 
-	"github.com/wagoodman/dive/internal/log"
+	"github.com/pRizz/dive/internal/log"
 )
 
 func buildImageFromCli(buildArgs []string) (string, error) {

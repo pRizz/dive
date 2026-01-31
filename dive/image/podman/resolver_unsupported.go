@@ -7,7 +7,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/wagoodman/dive/dive/image"
+	"github.com/pRizz/dive/dive/image"
 )
 
 type resolver struct{}

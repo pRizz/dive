@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/wagoodman/dive/dive/image"
-	"github.com/wagoodman/dive/internal/log"
+	"github.com/pRizz/dive/dive/image"
+	"github.com/pRizz/dive/internal/log"
 )
 
 type archiveResolver struct{}

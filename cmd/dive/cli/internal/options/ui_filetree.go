@@ -2,8 +2,8 @@ package options
 
 import (
 	"github.com/anchore/clio"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/ui/v1"
-	"github.com/wagoodman/dive/internal/log"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/ui/v1"
+	"github.com/pRizz/dive/internal/log"
 )
 
 var _ interface {

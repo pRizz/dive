@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/wagoodman/dive/dive/image"
-	"github.com/wagoodman/dive/dive/image/docker"
-	"github.com/wagoodman/dive/dive/image/podman"
+	"github.com/pRizz/dive/dive/image"
+	"github.com/pRizz/dive/dive/image/docker"
+	"github.com/pRizz/dive/dive/image/podman"
 )
 
 const (

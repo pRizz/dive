@@ -2,11 +2,11 @@ package cli
 
 import (
 	"github.com/anchore/clio"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/command"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/ui"
+	"github.com/pRizz/dive/internal/bus"
+	"github.com/pRizz/dive/internal/log"
 	"github.com/spf13/cobra"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/command"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/ui"
-	"github.com/wagoodman/dive/internal/bus"
-	"github.com/wagoodman/dive/internal/log"
 )
 
 func Application(id clio.Identification) clio.Application {

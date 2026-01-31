@@ -5,9 +5,9 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/pRizz/dive/internal/log"
 	"github.com/scylladb/go-set/strset"
 	"github.com/spf13/afero"
-	"github.com/wagoodman/dive/internal/log"
 )
 
 const (

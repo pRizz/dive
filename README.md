@@ -1,9 +1,8 @@
 # dive
-[![GitHub release](https://img.shields.io/github/release/wagoodman/dive.svg)](https://github.com/wagoodman/dive/releases/latest)
-[![Validations](https://github.com/wagoodman/dive/actions/workflows/validations.yaml/badge.svg)](https://github.com/wagoodman/dive/actions/workflows/validations.yaml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/wagoodman/dive)](https://goreportcard.com/report/github.com/wagoodman/dive)
-[![License: MIT](https://img.shields.io/badge/License-MIT%202.0-blue.svg)](https://github.com/wagoodman/dive/blob/main/LICENSE)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat)](https://www.paypal.me/wagoodman)
+[![GitHub release](https://img.shields.io/github/release/pRizz/dive.svg)](https://github.com/pRizz/dive/releases/latest)
+[![Validations](https://github.com/pRizz/dive/actions/workflows/validations.yaml/badge.svg)](https://github.com/pRizz/dive/actions/workflows/validations.yaml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/pRizz/dive)](https://goreportcard.com/report/github.com/pRizz/dive)
+[![License: MIT](https://img.shields.io/badge/License-MIT%202.0-blue.svg)](https://github.com/pRizz/dive/blob/main/LICENSE)
 
 **A tool for exploring a Docker image, layer contents, and discovering ways to shrink the size of your Docker/OCI image.**
 
@@ -17,7 +16,7 @@ dive <your-image-tag>
 
 or you can dive with Docker directly:
 ```
-alias dive="docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock docker.io/wagoodman/dive"
+alias dive="docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock docker.io/pRizz/dive"
 dive <your-image-tag>
 
 # for example
@@ -37,7 +36,7 @@ docker run --rm -it \
       -v  "$(pwd)":"$(pwd)" \
       -w "$(pwd)" \
       -v "$HOME/.dive.yaml":"$HOME/.dive.yaml" \
-      docker.io/wagoodman/dive:latest build -t <some-tag> .
+      docker.io/pRizz/dive:latest build -t <some-tag> .
 ```
 
 Additionally you can run this in your CI pipeline to ensure you're keeping wasted space to a minimum (this skips the UI):
@@ -97,8 +96,8 @@ With valid `source` options as such:
 
 Using debs:
 ```bash
-DIVE_VERSION=$(curl -sL "https://api.github.com/repos/wagoodman/dive/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
-curl -fOL "https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb"
+DIVE_VERSION=$(curl -sL "https://api.github.com/repos/pRizz/dive/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+curl -fOL "https://github.com/pRizz/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb"
 sudo apt install ./dive_${DIVE_VERSION}_linux_amd64.deb
 ```
 
@@ -113,13 +112,13 @@ sudo snap connect dive:docker-daemon docker:docker-daemon
 > [!CAUTION]
 > The Snap method is not recommended if you installed Docker via `apt-get`, since it might break your existing Docker daemon.
 > 
-> See also: https://github.com/wagoodman/dive/issues/546
+> See also: https://github.com/pRizz/dive/issues/546
 
 
 **RHEL/Centos**
 ```bash
-DIVE_VERSION=$(curl -sL "https://api.github.com/repos/wagoodman/dive/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
-curl -fOL "https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.rpm"
+DIVE_VERSION=$(curl -sL "https://api.github.com/repos/pRizz/dive/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+curl -fOL "https://github.com/pRizz/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.rpm"
 rpm -i dive_${DIVE_VERSION}_linux_amd64.rpm
 ```
 
@@ -145,7 +144,7 @@ If you use [MacPorts](https://www.macports.org):
 sudo port install dive
 ```
 
-Or download the latest Darwin build from the [releases page](https://github.com/wagoodman/dive/releases/latest).
+Or download the latest Darwin build from the [releases page](https://github.com/pRizz/dive/releases/latest).
 
 **Windows**
 
@@ -164,16 +163,16 @@ scoop install main/dive
 If you use [winget](https://learn.microsoft.com/en-gb/windows/package-manager/):
 
 ```powershell
-winget install --id wagoodman.dive
+winget install --id pRizz.dive
 ```
 
-Or download the latest Windows build from the [releases page](https://github.com/wagoodman/dive/releases/latest).
+Or download the latest Windows build from the [releases page](https://github.com/pRizz/dive/releases/latest).
 
 **Go tools**
 Requires Go version 1.10 or higher.
 
 ```bash
-go install github.com/wagoodman/dive@latest
+go install github.com/pRizz/dive@latest
 ```
 *Note*: installing in this way you will not see a proper version when running `dive -v`.
 
@@ -197,23 +196,23 @@ x env use dive
 
 **Docker**
 ```bash
-docker pull docker.io/wagoodman/dive
+docker pull docker.io/pRizz/dive
 # or alternatively
-docker pull ghcr.io/wagoodman/dive
+docker pull ghcr.io/pRizz/dive
 ```
 
 When running you'll need to include the Docker socket file:
 ```bash
 docker run --rm -it \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    docker.io/wagoodman/dive:latest <dive arguments...>
+    docker.io/pRizz/dive:latest <dive arguments...>
 ```
 
 Docker for Windows (showing PowerShell compatible line breaks; collapse to a single line for Command Prompt compatibility)
 ```bash
 docker run --rm -it `
     -v /var/run/docker.sock:/var/run/docker.sock `
-    docker.io/wagoodman/dive:latest <dive arguments...>
+    docker.io/pRizz/dive:latest <dive arguments...>
 ```
 
 **Note:** depending on the version of docker you are running locally you may need to specify the docker API version as an environment variable:
@@ -225,7 +224,7 @@ or if you are running with a docker image:
 docker run --rm -it \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -e DOCKER_API_VERSION=1.37 \
-    docker.io/wagoodman/dive:latest <dive arguments...>
+    docker.io/pRizz/dive:latest <dive arguments...>
 ```
 if you are using an alternative runtime (Colima etc) then you may need to specify the docker host as an environment variable in order to pull local images:
 ```bash

@@ -1,7 +1,7 @@
 
 version: "3"
 vars:
-  OWNER: wagoodman
+  OWNER: pRizz
   PROJECT: dive
 
   # static file dirs
@@ -173,7 +173,7 @@ tasks:
       - tmpdir
     vars:
       TEST_PKGS:
-        sh: "go list ./... | grep -v '^github.com/wagoodman/dive/cmd/dive/cli$'  | tr '\n' ' '"
+        sh: "go list ./... | grep -v '^github.com/pRizz/dive/cmd/dive/cli$'  | tr '\n' ' '"
 
       # unit test coverage threshold (in % coverage)
       COVERAGE_THRESHOLD: 25
@@ -185,7 +185,7 @@ tasks:
   cli:
     desc: Run CLI tests
     cmds:
-      - "go test github.com/wagoodman/dive/cmd/dive/cli -v"
+      - "go test github.com/pRizz/dive/cmd/dive/cli -v"
 
   ## Acceptance tests #################################
 
@@ -205,7 +205,7 @@ tasks:
           -t \
           --env CLICOLOR_FORCE=true \
           -v /var/run/docker.sock:/var/run/docker.sock \
-          'docker.io/wagoodman/dive:latest' \
+          'docker.io/pRizz/dive:latest' \
             '{{ .TEST_IMAGE }}' \
             --ci
 

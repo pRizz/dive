@@ -3,10 +3,10 @@ package command
 import (
 	"fmt"
 	"github.com/anchore/clio"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/command/adapter"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/options"
+	"github.com/pRizz/dive/dive"
 	"github.com/spf13/cobra"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/command/adapter"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/options"
-	"github.com/wagoodman/dive/dive"
 )
 
 type buildOptions struct {

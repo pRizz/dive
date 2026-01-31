@@ -9,8 +9,8 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/wagoodman/dive/internal/log"
-	"github.com/wagoodman/dive/internal/utils"
+	"github.com/pRizz/dive/internal/log"
+	"github.com/pRizz/dive/internal/utils"
 )
 
 // runPodmanCmd runs a given Podman command in the current tty

@@ -37,10 +37,10 @@ builds:
 
 brews:
   - repository:
-      owner: wagoodman
+      owner: pRizz
       name: homebrew-dive
       token: "{{.Env.TAP_GITHUB_TOKEN}}"
-    homepage: &project_url "https://github.com/wagoodman/dive/"
+    homepage: &project_url "https://github.com/pRizz/dive/"
     description: &description "A tool for exploring layers in a docker image"
 
 archives:
@@ -51,7 +51,7 @@ archives:
 
 nfpms:
   - license: MIT
-    maintainer: Alex Goodman
+    maintainer: Peter Ryszkiewicz
     homepage: *project_url
     description: *description
     formats:
@@ -67,8 +67,8 @@ dockers:
     use: buildx
     goarch: amd64
     image_templates:
-      - docker.io/wagoodman/dive:latest
-      - docker.io/wagoodman/dive:v{{.Version}}-amd64
+      - docker.io/pRizz/dive:latest
+      - docker.io/pRizz/dive:v{{.Version}}-amd64
     build_flag_templates:
       - "--build-arg=DOCKER_CLI_VERSION={{.Env.DOCKER_CLI_VERSION}}"
       - "--platform=linux/amd64"
@@ -80,7 +80,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.licenses=MIT"
-      - "--label=org.opencontainers.image.authors=Alex Goodman <@wagoodman>"
+      - "--label=org.opencontainers.image.authors=Peter Ryszkiewicz <@pRizz>"
 
   # docker.io arm64
   - &dockerhub_arm64
@@ -90,7 +90,7 @@ dockers:
     use: buildx
     goarch: arm64
     image_templates:
-      - docker.io/wagoodman/dive:v{{.Version}}-arm64
+      - docker.io/pRizz/dive:v{{.Version}}-arm64
     build_flag_templates:
       - "--build-arg=DOCKER_CLI_VERSION={{.Env.DOCKER_CLI_VERSION}}"
       - "--platform=linux/arm64/v8"
@@ -102,47 +102,47 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.licenses=MIT"
-      - "--label=org.opencontainers.image.authors=Alex Goodman <@wagoodman>"
+      - "--label=org.opencontainers.image.authors=Peter Ryszkiewicz <@pRizz>"
 
   # ghcr.io amd64
   - id: ghcr-amd64
     <<: *dockerhub_amd64
     image_templates:
-      - ghcr.io/wagoodman/dive:v{{.Version}}-amd64
+      - ghcr.io/pRizz/dive:v{{.Version}}-amd64
 
   # ghcr.io arm64
   - id: ghcr-arm64
     <<: *dockerhub_arm64
     image_templates:
-      - ghcr.io/wagoodman/dive:v{{.Version}}-arm64
+      - ghcr.io/pRizz/dive:v{{.Version}}-arm64
 
 docker_manifests:
   # docker.io manifests
-  - name_template: docker.io/wagoodman/dive:latest
+  - name_template: docker.io/pRizz/dive:latest
     image_templates: &dockerhub_images
-      - docker.io/wagoodman/dive:v{{.Version}}-amd64
-      - docker.io/wagoodman/dive:v{{.Version}}-arm64
+      - docker.io/pRizz/dive:v{{.Version}}-amd64
+      - docker.io/pRizz/dive:v{{.Version}}-arm64
 
-  - name_template: docker.io/wagoodman/dive:v{{.Major}}
+  - name_template: docker.io/pRizz/dive:v{{.Major}}
     image_templates: *dockerhub_images
 
-  - name_template: docker.io/wagoodman/dive:v{{.Major}}.{{.Minor}}
+  - name_template: docker.io/pRizz/dive:v{{.Major}}.{{.Minor}}
     image_templates: *dockerhub_images
 
-  - name_template: docker.io/wagoodman/dive:v{{.Version}}
+  - name_template: docker.io/pRizz/dive:v{{.Version}}
     image_templates: *dockerhub_images
 
   # ghcr.io manifests
-  - name_template: ghcr.io/wagoodman/dive:latest
+  - name_template: ghcr.io/pRizz/dive:latest
     image_templates: &ghcr_images
-      - ghcr.io/wagoodman/dive:v{{.Version}}-amd64
-      - ghcr.io/wagoodman/dive:v{{.Version}}-arm64
+      - ghcr.io/pRizz/dive:v{{.Version}}-amd64
+      - ghcr.io/pRizz/dive:v{{.Version}}-arm64
 
-  - name_template: ghcr.io/wagoodman/dive:v{{.Major}}
+  - name_template: ghcr.io/pRizz/dive:v{{.Major}}
     image_templates: *ghcr_images
 
-  - name_template: ghcr.io/wagoodman/dive:v{{.Major}}.{{.Minor}}
+  - name_template: ghcr.io/pRizz/dive:v{{.Major}}.{{.Minor}}
     image_templates: *ghcr_images
 
-  - name_template: ghcr.io/wagoodman/dive:v{{.Version}}
+  - name_template: ghcr.io/pRizz/dive:v{{.Version}}
     image_templates: *ghcr_images

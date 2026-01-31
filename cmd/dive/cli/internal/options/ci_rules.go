@@ -2,8 +2,8 @@ package options
 
 import (
 	"github.com/anchore/clio"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/command/ci"
-	"github.com/wagoodman/dive/internal/log"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/command/ci"
+	"github.com/pRizz/dive/internal/log"
 )
 
 type CIRules struct {

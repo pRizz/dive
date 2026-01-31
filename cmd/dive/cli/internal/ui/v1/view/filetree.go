@@ -3,16 +3,16 @@ package view
 import (
 	"fmt"
 	"github.com/anchore/go-logger"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/ui/v1"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/ui/v1/format"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/ui/v1/key"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/ui/v1/viewmodel"
-	"github.com/wagoodman/dive/internal/log"
-	"github.com/wagoodman/dive/internal/utils"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/ui/v1"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/ui/v1/format"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/ui/v1/key"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/ui/v1/viewmodel"
+	"github.com/pRizz/dive/internal/log"
+	"github.com/pRizz/dive/internal/utils"
 	"regexp"
 
 	"github.com/awesome-gocui/gocui"
-	"github.com/wagoodman/dive/dive/filetree"
+	"github.com/pRizz/dive/dive/filetree"
 )
 
 type ViewOptionChangeListener func() error

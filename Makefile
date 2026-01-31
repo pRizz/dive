@@ -1,4 +1,4 @@
-OWNER = wagoodman
+OWNER = pRizz
 PROJECT = dive
 
 TOOL_DIR = .tool

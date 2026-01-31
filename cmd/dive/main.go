@@ -1,6 +1,6 @@
 package main
 
-// Copyright © 2018 Alex Goodman
+// Copyright © 2018 Peter Ryszkiewicz
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@ package main
 
 import (
 	"github.com/anchore/clio"
-	"github.com/wagoodman/dive/cmd/dive/cli"
+	"github.com/pRizz/dive/cmd/dive/cli"
 )
 
 // applicationName is the non-capitalized name of the application (do not change this)

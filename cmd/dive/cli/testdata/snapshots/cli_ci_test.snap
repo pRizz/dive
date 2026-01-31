@@ -11,7 +11,6 @@ Inefficient Files:
   2      34 B          /root/example/somefile1.txt
   2      17 B          /root/example/somefile3.txt
   2      0 B           /root
-  10     0 B           /etc
 
 Evaluation:
   FAIL  highestUserWastedPercent (too many bytes wasted, relative to the user bytes added (%-user-wasted-bytes=0.72 > threshold=0.1))
@@ -23,18 +22,18 @@ FAIL [pass:1 fail:1 skip:1]
 ---
 
 [Test_CI_DefaultCIConfig - 1]
-[0001]  INFO dive version: testing
-[0001] DEBUG config:
-[35m  log:
+[0003]  INFO dive version: testing
+[0003] DEBUG config:
+  log:
       quiet: false
       level: debug
       file: ""
   dev:
       profile: none
-  image: /Users/wagoodman/code/dive/.data/test-docker-image.tar
+  image: /Users/peterryszkiewicz/Repos/dive/.data/test-docker-image.tar
   container-engine: docker
   ignore-errors: false
-  ci: false
+  ci: true
   ci-config: .dive-ci
   rules:
       lowest-efficiency: "0.96"
@@ -71,8 +70,8 @@ FAIL [pass:1 fail:1 skip:1]
       pane-width: 0.5
       show-attributes: true
   layer:
-      show-aggregated-changes: false[0m
-[0001]  INFO fetching image=/Users/wagoodman/code/dive/.data/test-docker-image.tar
-[0001] DEBUG └── resolver: docker-engine
+      show-aggregated-changes: false
+[0003]  INFO fetching image=/Users/peterryszkiewicz/Repos/dive/.data/test-docker-image.tar
+[0003] DEBUG └── resolver: docker-engine
 
 ---

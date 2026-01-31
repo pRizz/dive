@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"github.com/anchore/go-logger"
 	"github.com/awesome-gocui/gocui"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/ui/v1"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/ui/v1/format"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/ui/v1/key"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/ui/v1/viewmodel"
-	"github.com/wagoodman/dive/dive/image"
-	"github.com/wagoodman/dive/internal/log"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/ui/v1"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/ui/v1/format"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/ui/v1/key"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/ui/v1/viewmodel"
+	"github.com/pRizz/dive/dive/image"
+	"github.com/pRizz/dive/internal/log"
 )
 
 // Layer holds the UI objects and data models for populating the lower-left pane.

@@ -3,12 +3,12 @@ package adapter
 import (
 	"context"
 	"fmt"
+	"github.com/pRizz/dive/cmd/dive/cli/internal/command/export"
+	"github.com/pRizz/dive/dive/image"
+	"github.com/pRizz/dive/internal/bus"
+	"github.com/pRizz/dive/internal/bus/event/payload"
+	"github.com/pRizz/dive/internal/log"
 	"github.com/spf13/afero"
-	"github.com/wagoodman/dive/cmd/dive/cli/internal/command/export"
-	"github.com/wagoodman/dive/dive/image"
-	"github.com/wagoodman/dive/internal/bus"
-	"github.com/wagoodman/dive/internal/bus/event/payload"
-	"github.com/wagoodman/dive/internal/log"
 	"os"
 )
 

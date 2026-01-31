@@ -1,4 +1,4 @@
-module github.com/wagoodman/dive
+module github.com/pRizz/dive
 
 go 1.25.6
 

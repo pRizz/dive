@@ -3,9 +3,9 @@ package options
 import (
 	"fmt"
 	"github.com/anchore/clio"
+	"github.com/pRizz/dive/dive"
+	"github.com/pRizz/dive/internal/log"
 	"github.com/scylladb/go-set/strset"
-	"github.com/wagoodman/dive/dive"
-	"github.com/wagoodman/dive/internal/log"
 	"strings"
 )
 

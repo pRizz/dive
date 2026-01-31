@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/wagoodman/dive/dive/image/docker"
+	"github.com/pRizz/dive/dive/image/docker"
 )
 
 var repoRootCache atomic.String
