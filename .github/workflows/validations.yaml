@@ -58,7 +58,7 @@ jobs:
       - name: Build snapshot artifacts
         run: make snapshot
 
-      - run: docker images pRizz/dive
+      - run: docker images prizz/dive
 
       # todo: compare against known json output in shared volume
       - name: Test production image

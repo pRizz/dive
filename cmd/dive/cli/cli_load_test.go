@@ -72,7 +72,7 @@ func assertLoadOutput(t testing.TB, combined string) {
 
 func Test_FetchFailure(t *testing.T) {
 	t.Run("nonexistent image", func(t *testing.T) {
-		rootCmd := getTestCommand(t, "docker:pRizz/nonexistent/image:tag")
+		rootCmd := getTestCommand(t, "docker:prizz/nonexistent/image:tag")
 		combined := Capture().WithStdout().WithStderr().Run(t, func() {
 			require.ErrorContains(t, rootCmd.Execute(), "cannot load image: Error response from daemon: invalid reference format")
 		})
@@ -83,7 +83,7 @@ func Test_FetchFailure(t *testing.T) {
 	})
 
 	t.Run("invalid image name", func(t *testing.T) {
-		rootCmd := getTestCommand(t, "docker:///pRizz/invalid:image:format")
+		rootCmd := getTestCommand(t, "docker:///prizz/invalid:image:format")
 		combined := Capture().WithStdout().WithStderr().Run(t, func() {
 			require.ErrorContains(t, rootCmd.Execute(), "cannot load image: Error response from daemon: invalid reference format")
 		})

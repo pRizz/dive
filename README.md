@@ -16,7 +16,7 @@ dive <your-image-tag>
 
 or you can dive with Docker directly:
 ```
-alias dive="docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock docker.io/pRizz/dive"
+alias dive="docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock docker.io/prizz/dive"
 dive <your-image-tag>
 
 # for example
@@ -36,7 +36,7 @@ docker run --rm -it \
       -v  "$(pwd)":"$(pwd)" \
       -w "$(pwd)" \
       -v "$HOME/.dive.yaml":"$HOME/.dive.yaml" \
-      docker.io/pRizz/dive:latest build -t <some-tag> .
+      docker.io/prizz/dive:latest build -t <some-tag> .
 ```
 
 Additionally you can run this in your CI pipeline to ensure you're keeping wasted space to a minimum (this skips the UI):
@@ -196,7 +196,7 @@ x env use dive
 
 **Docker**
 ```bash
-docker pull docker.io/pRizz/dive
+docker pull docker.io/prizz/dive
 # or alternatively
 docker pull ghcr.io/pRizz/dive
 ```
@@ -205,14 +205,14 @@ When running you'll need to include the Docker socket file:
 ```bash
 docker run --rm -it \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    docker.io/pRizz/dive:latest <dive arguments...>
+    docker.io/prizz/dive:latest <dive arguments...>
 ```
 
 Docker for Windows (showing PowerShell compatible line breaks; collapse to a single line for Command Prompt compatibility)
 ```bash
 docker run --rm -it `
     -v /var/run/docker.sock:/var/run/docker.sock `
-    docker.io/pRizz/dive:latest <dive arguments...>
+    docker.io/prizz/dive:latest <dive arguments...>
 ```
 
 **Note:** depending on the version of docker you are running locally you may need to specify the docker API version as an environment variable:
@@ -224,7 +224,7 @@ or if you are running with a docker image:
 docker run --rm -it \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -e DOCKER_API_VERSION=1.37 \
-    docker.io/pRizz/dive:latest <dive arguments...>
+    docker.io/prizz/dive:latest <dive arguments...>
 ```
 if you are using an alternative runtime (Colima etc) then you may need to specify the docker host as an environment variable in order to pull local images:
 ```bash

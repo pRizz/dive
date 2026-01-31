@@ -205,7 +205,7 @@ tasks:
           -t \
           --env CLICOLOR_FORCE=true \
           -v /var/run/docker.sock:/var/run/docker.sock \
-          'docker.io/pRizz/dive:latest' \
+          'docker.io/prizz/dive:latest' \
             '{{ .TEST_IMAGE }}' \
             --ci
 

@@ -67,8 +67,8 @@ dockers:
     use: buildx
     goarch: amd64
     image_templates:
-      - docker.io/pRizz/dive:latest
-      - docker.io/pRizz/dive:v{{.Version}}-amd64
+      - docker.io/prizz/dive:latest
+      - docker.io/prizz/dive:v{{.Version}}-amd64
     build_flag_templates:
       - "--build-arg=DOCKER_CLI_VERSION={{.Env.DOCKER_CLI_VERSION}}"
       - "--platform=linux/amd64"
@@ -90,7 +90,7 @@ dockers:
     use: buildx
     goarch: arm64
     image_templates:
-      - docker.io/pRizz/dive:v{{.Version}}-arm64
+      - docker.io/prizz/dive:v{{.Version}}-arm64
     build_flag_templates:
       - "--build-arg=DOCKER_CLI_VERSION={{.Env.DOCKER_CLI_VERSION}}"
       - "--platform=linux/arm64/v8"
@@ -118,18 +118,18 @@ dockers:
 
 docker_manifests:
   # docker.io manifests
-  - name_template: docker.io/pRizz/dive:latest
+  - name_template: docker.io/prizz/dive:latest
     image_templates: &dockerhub_images
-      - docker.io/pRizz/dive:v{{.Version}}-amd64
-      - docker.io/pRizz/dive:v{{.Version}}-arm64
+      - docker.io/prizz/dive:v{{.Version}}-amd64
+      - docker.io/prizz/dive:v{{.Version}}-arm64
 
-  - name_template: docker.io/pRizz/dive:v{{.Major}}
+  - name_template: docker.io/prizz/dive:v{{.Major}}
     image_templates: *dockerhub_images
 
-  - name_template: docker.io/pRizz/dive:v{{.Major}}.{{.Minor}}
+  - name_template: docker.io/prizz/dive:v{{.Major}}.{{.Minor}}
     image_templates: *dockerhub_images
 
-  - name_template: docker.io/pRizz/dive:v{{.Version}}
+  - name_template: docker.io/prizz/dive:v{{.Version}}
     image_templates: *dockerhub_images
 
   # ghcr.io manifests
