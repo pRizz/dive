@@ -113,6 +113,8 @@ jobs:
 
       - name: Generate changelog (pre-tag)
         run: .tool/chronicle -vvv > CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Tag release
         run: |
