@@ -137,7 +137,7 @@ docker_manifests:
     image_templates: *dockerhub_images
 
   # ghcr.io manifests
-  - name_template: ghcr.io/pRizz/dive:latest
+  - name_template: ghcr.io/prizz/dive:latest
     image_templates: &ghcr_images
       - ghcr.io/prizz/dive:v{{.Version}}-amd64
       - ghcr.io/prizz/dive:v{{.Version}}-arm64
