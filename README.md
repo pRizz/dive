@@ -6,6 +6,8 @@
 
 **A tool for exploring a Docker image, layer contents, and discovering ways to shrink the size of your Docker/OCI image.**
 
+**Fork notice:** This repository is a fork of [wagoodman/dive](https://github.com/wagoodman/dive) and focuses on updating dependencies to address vulnerabilities flagged by Docker Scout.
+
 
 ![Image](.data/demo.gif)
 
