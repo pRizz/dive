@@ -3,8 +3,12 @@ description: "Bootstrap all tools and dependencies"
 inputs:
   go-version:
     description: "Go version to install"
-    required: true
-    default: "1.24.x"
+    required: false
+    default: ""
+  go-version-file:
+    description: "Path to go.mod for go version"
+    required: false
+    default: "go.mod"
   cache-key-prefix:
     description: "Prefix all cache keys with this value"
     required: true
@@ -16,9 +20,21 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-go@v5
+    - name: Set up Go (version)
+      if: ${{ inputs.go-version != '' }}
+      uses: actions/setup-go@v5
       with:
         go-version: ${{ inputs.go-version }}
+
+    - name: Set up Go (go.mod)
+      if: ${{ inputs.go-version == '' }}
+      uses: actions/setup-go@v5
+      with:
+        go-version-file: ${{ inputs.go-version-file }}
+
+    - name: Pin Go toolchain to local
+      shell: bash
+      run: echo "GOTOOLCHAIN=local" >> "$GITHUB_ENV"
 
     - name: Restore tool cache
       id: tool-cache

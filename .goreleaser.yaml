@@ -108,13 +108,13 @@ dockers:
   - id: ghcr-amd64
     <<: *dockerhub_amd64
     image_templates:
-      - ghcr.io/pRizz/dive:v{{.Version}}-amd64
+      - ghcr.io/prizz/dive:v{{.Version}}-amd64
 
   # ghcr.io arm64
   - id: ghcr-arm64
     <<: *dockerhub_arm64
     image_templates:
-      - ghcr.io/pRizz/dive:v{{.Version}}-arm64
+      - ghcr.io/prizz/dive:v{{.Version}}-arm64
 
 docker_manifests:
   # docker.io manifests
@@ -135,14 +135,14 @@ docker_manifests:
   # ghcr.io manifests
   - name_template: ghcr.io/pRizz/dive:latest
     image_templates: &ghcr_images
-      - ghcr.io/pRizz/dive:v{{.Version}}-amd64
-      - ghcr.io/pRizz/dive:v{{.Version}}-arm64
+      - ghcr.io/prizz/dive:v{{.Version}}-amd64
+      - ghcr.io/prizz/dive:v{{.Version}}-arm64
 
-  - name_template: ghcr.io/pRizz/dive:v{{.Major}}
+  - name_template: ghcr.io/prizz/dive:v{{.Major}}
     image_templates: *ghcr_images
 
-  - name_template: ghcr.io/pRizz/dive:v{{.Major}}.{{.Minor}}
+  - name_template: ghcr.io/prizz/dive:v{{.Major}}.{{.Minor}}
     image_templates: *ghcr_images
 
-  - name_template: ghcr.io/pRizz/dive:v{{.Version}}
+  - name_template: ghcr.io/prizz/dive:v{{.Version}}
     image_templates: *ghcr_images
