@@ -83,6 +83,9 @@ jobs:
       contents: write
       # for pushing container images
       packages: write
+      # for Chronicle GitHub GraphQL queries (issues/PRs/releases)
+      issues: read
+      pull-requests: read
     steps:
       - uses: actions/checkout@v4
         with:
