@@ -22,15 +22,21 @@ runs:
   steps:
     - name: Set up Go (version)
       if: ${{ inputs.go-version != '' }}
+      id: setup-go-version
       uses: actions/setup-go@v5
       with:
         go-version: ${{ inputs.go-version }}
+        cache: true
+        cache-dependency-path: go.sum
 
     - name: Set up Go (go.mod)
       if: ${{ inputs.go-version == '' }}
+      id: setup-go-file
       uses: actions/setup-go@v5
       with:
         go-version-file: ${{ inputs.go-version-file }}
+        cache: true
+        cache-dependency-path: go.sum
 
     - name: Pin Go toolchain to local
       shell: bash
@@ -38,6 +44,13 @@ runs:
 
     - name: Restore tool cache
       id: tool-cache
+      uses: actions/cache@v4
+      with:
+        path: ${{ github.workspace }}/.tool
+        key: ${{ inputs.cache-key-prefix }}-${{ runner.os }}-tools-${{ hashFiles('.binny.yaml') }}
+
+    - name: Restore tmp cache
+      id: tmp-cache
       uses: actions/cache@v4
       with:
         path: ${{ github.workspace }}/.tmp
@@ -50,7 +63,7 @@ runs:
 
     - name: (cache-miss) Bootstrap go dependencies
       shell: bash
-      if: steps.go-mod-cache.outputs.cache-hit != 'true'
+      if: steps.setup-go-version.outputs.cache-hit != 'true' && steps.setup-go-file.outputs.cache-hit != 'true'
       run: go mod download -x
 
     - name: Install apt packages

@@ -72,6 +72,8 @@ dockers:
     build_flag_templates:
       - "--build-arg=DOCKER_CLI_VERSION={{.Env.DOCKER_CLI_VERSION}}"
       - "--platform=linux/amd64"
+      - "{{ if .Env.CI }}--cache-from=type=gha{{ end }}"
+      - "{{ if .Env.CI }}--cache-to=type=gha,mode=max{{ end }}"
       - "--label=org.opencontainers.image.created={{.Date}}"
       - "--label=org.opencontainers.image.title={{.ProjectName}}"
       - "--label=org.opencontainers.image.description=A tool for exploring layers in a docker image"
@@ -94,6 +96,8 @@ dockers:
     build_flag_templates:
       - "--build-arg=DOCKER_CLI_VERSION={{.Env.DOCKER_CLI_VERSION}}"
       - "--platform=linux/arm64/v8"
+      - "{{ if .Env.CI }}--cache-from=type=gha{{ end }}"
+      - "{{ if .Env.CI }}--cache-to=type=gha,mode=max{{ end }}"
       - "--label=org.opencontainers.image.created={{.Date}}"
       - "--label=org.opencontainers.image.title={{.ProjectName}}"
       - "--label=org.opencontainers.image.description=A tool for exploring layers in a docker image"
